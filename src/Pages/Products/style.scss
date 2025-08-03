@@ -1,0 +1,24 @@
+.ProductList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100% !important;
+  height: 100% !important;
+}
+.ProductList_Card {
+  flex-grow: 1;
+  margin: 1% !important;
+  width: 15% !important;
+  height: 30% !important;
+}
+// .ProductList_Card_Img {
+//   width: 25% !important;
+// }
+.ProductList_Card_Center{
+  width: 25% !important;
+  height: 25% !important;
+}
+.ProductList_Card_Footer {
+    display: flex;
+    gap: 50%;
+    
+}

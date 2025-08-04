@@ -5,11 +5,11 @@ import {
 import AppRoutes from "./Components/AppRoutes";
 const App = () => {
   return (
-    <div>
+    < >
       <Router>
         <AppRoutes />
       </Router>
-    </div>
+    </>
   );
 };
 

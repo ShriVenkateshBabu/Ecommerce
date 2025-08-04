@@ -1,15 +1,26 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const Fetch = () => {
+const Fetch = (url) => {
   const [data, SetData] = useState([]);
   const [ErrMsg, SetErrMsg] = useState("");
   const [IsLoading, SetIsLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:3000/products", { method: "GET" })
-      .then((res) => res.json())
-      .then((data) => SetData(data))
-      .catch((err) => SetErrMsg(err.message))
-      .finally(() => SetIsLoading(false));
+    const APIFetch = async()=>{
+      try{
+        const response = await axios.get(url)
+        SetData(response.data);
+      }
+      catch(err){
+        SetErrMsg(err.message);
+      }
+      finally{
+        setTimeout(() => {
+           SetIsLoading(false)
+        },1000)
+      }
+    }
+    APIFetch()
   }, []);
   return { data, ErrMsg, IsLoading };
 };

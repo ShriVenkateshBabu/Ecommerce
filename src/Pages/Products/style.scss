@@ -13,12 +13,34 @@
 // .ProductList_Card_Img {
 //   width: 25% !important;
 // }
-.ProductList_Card_Center{
+.ProductList_Card_Center {
   width: 25% !important;
   height: 25% !important;
 }
 .ProductList_Card_Footer {
-    display: flex;
-    gap: 50%;
-    
+  display: flex;
+  gap: 50%;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.NewProduct_Paper {
+   padding: 1%;
+   margin: 2% auto;
+   height: 80vh;
+   width: 50vw;
+}
+.NewProduct_Paper h5{
+  margin-bottom: 3% !important;
+}
+.NewProductGrid{
+  gap: 15% !important;
+  padding: 2% !important;
+  display: grid;
+}
+.NewProduct_btn{
+   margin-bottom: 10%;
 }

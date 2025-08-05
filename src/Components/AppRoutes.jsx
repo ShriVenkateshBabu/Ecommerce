@@ -12,7 +12,7 @@ import Home from "../Pages/HomePage/Home";
 import Products from "../Pages/Products/Products";
 import ProductList from "../Pages/Products/ProductList";
 import ProductDetails from "../Pages/Products/ProductDetails";
-import NewProduct from "../Pages/Products/NewProduct";
+import NewProduct from "../Pages/Products/NewProduct/NewProduct";
 import Checkout from "../Pages/Checkout/Checkout";
 
 const AppRoutes = () => {

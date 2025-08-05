@@ -1,52 +1,20 @@
 import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
+import NewProductFn from "./NewProductFn";
 import "./style.scss";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
-  const navigate = useNavigate("");
-  const [NewProduct, SetNewProduct] = useState({
-    id: 1,
-    title: "",
-    price: 0,
-    description:
-      "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    category: "",
-    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-    rating: {
-      rate: 0,
-      count: 0,
-    },
-  });
-
-  const HandleNewProduct = (event) => {
-    const { name, value } = event.target;
-    const FieldName = name.split("rating.")[1];
-    if (name.includes("rating.")) {
-      SetNewProduct({
-        ...NewProduct,
-        rating: { ...NewProduct.rating, [FieldName]: value },
-      });
-    }
-    else{
-      SetNewProduct({
-        ...NewProduct,
-        [name]: value
-      })
-    }
-  };
-  const addNewProduct = () => {
-     if(NewProduct){
-      navigate("/products")
-     }
-  };
+  const { HandleNewProduct,
+    AddProduct,
+    NewProduct,
+  } = NewProductFn()
+  console.log(NewProduct);
   return (
     <>
       <Paper elevation={20} className="NewProduct_Paper">
         <Typography variant="h5" component="h5" textAlign={"center"}>
           Create New Product
         </Typography>
-        <Grid component={"form"} spacing={2} className="NewProductGrid">
+        <Grid component={"form"} spacing={2} className="NewProductGrid" onSubmit={AddProduct}>
           <TextField
             label="Product Name"
             type="text"
@@ -59,7 +27,7 @@ const NewProduct = () => {
           <TextField
             label="Category"
             type="text"
-            value ={NewProduct.category}
+            value={NewProduct.category}
             variant="outlined"
             fullWidth
             name="category"
@@ -89,7 +57,7 @@ const NewProduct = () => {
               />
             </Grid>
           </Grid>
-          <Button onClick={addNewProduct} variant="contained">
+          <Button type="submit" aria-label="add" role="button" variant="contained">
             Add
           </Button>
         </Grid>

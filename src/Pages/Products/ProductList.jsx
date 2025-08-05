@@ -9,6 +9,7 @@ const ProductList = () => {
   const { data, ErrMsg, IsLoading } = useOutletContext();
   const navigate = useNavigate()
   console.log(ErrMsg, IsLoading);
+  console.log(data)
   if (IsLoading) {
     return (
       <Backdrop
@@ -19,16 +20,13 @@ const ProductList = () => {
       </Backdrop>
     );
   }
-  const NewProduct = () => {
-     navigate("/products/newproduct")
-  };
   return (
     <section>
       <div>
         <MuiButton
           variant="contained"
           endIcon={<AddShoppingCartIcon />}
-          onClick={NewProduct}
+          onClick={() => navigate("/products/newproduct")}
           className="NewProduct_btn"
         >
           Add New Product
@@ -48,9 +46,9 @@ const ProductList = () => {
             <Card.Body>
               <Card.Title>{product.title}</Card.Title>
               <Card.Text>
-                {product.description.length > 40
-                  ? product.description.substr(0, 60) + "..."
-                  : product.description}
+                {product.description && product.description.length > 40
+                  ? product.description.substring(0, 60) + "..."
+                  : product.description || "No description available"}
               </Card.Text>
             </Card.Body>
             <Card.Footer className="ProductList_Card_Footer">

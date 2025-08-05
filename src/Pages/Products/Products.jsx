@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Fetch from "../../Fetch/Fetch";
 import "./style.scss";
 const Products = () => {
-  const { data, ErrMsg, IsLoading } = Fetch("https://fakestoreapi.com/products");
+  const { data, ErrMsg, IsLoading } = Fetch("http://localhost:3000/products");
 
   return (
     <>

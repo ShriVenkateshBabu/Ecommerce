@@ -1,12 +1,12 @@
 import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
-import NewProductFn from "./NewProductFn";
+import UpdataeProductfn from "./UpdateProductfn";
 import "./style.scss";
 
-const NewProduct = () => {
+const UpdateProduct = () => {
   const { HandleNewProduct,
     AddProduct,
     NewProduct,
-  } = NewProductFn()
+  } = UpdataeProductfn()
   return (
     <>
       <Paper elevation={20} className="NewProduct_Paper">
@@ -63,6 +63,7 @@ const NewProduct = () => {
       </Paper>
     </>
   );
-};
 
-export default NewProduct;
+}
+
+export default UpdateProduct

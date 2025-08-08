@@ -40,7 +40,7 @@ const Home = () => {
   }
   return (
     <>
-      <Box sx={{ width: "100%", height: "90%", overflowY: 'scroll', overflowX: 'hidden' }}>
+      <Box sx={{ width: "100%", height: "90%", overflowY: 'scroll', overflow: 'hidden' }}>
         <ImageList variant="masonry" cols={3} gap={8}>
           {itemData.map((item) => (
             <ImageListItem key={item.img}>

@@ -1,19 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import AccountMenu from "./LoginAvatar";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import SearchAppBar from "./SearchBar";
 import "./ComponentCss/NavBar.scss";
 const NavBar = () => {
-  const navigate = useNavigate();
-  const Logout = () => {
-    console.log("Logout function called");
-      navigate("/")
-  }
+ 
   return (
-   <nav>
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <nav>
+      <Navbar expand="lg" className="bg-body-tertiary">
         <Container fluid>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -32,16 +28,8 @@ const NavBar = () => {
                 Checkout
               </Nav.Link>
             </Nav>
-            <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button className="navBtn">Search</Button>
-            </Form>
-            <Button onClick={Logout} className="navBtn">Logout</Button>
+            <SearchAppBar />
+            <AccountMenu />
           </Navbar.Collapse>
         </Container>
       </Navbar>

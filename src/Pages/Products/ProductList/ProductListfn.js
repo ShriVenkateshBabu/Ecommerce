@@ -5,7 +5,7 @@ const ProductListfn = () => {
     const DeleteApi = async () => {
       try {
         const DeleteProductResponse = await axios.delete(
-          `http://localhost:3000/products/${id}`
+          `https://json-server-msx5.onrender.com/products/${id}`
         );
         if (
           DeleteProductResponse.status == 200 ||

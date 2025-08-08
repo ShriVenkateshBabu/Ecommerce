@@ -10,10 +10,12 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/SignUp/Signup";
 import Home from "../Pages/HomePage/Home";
 import Products from "../Pages/Products/Products";
-import ProductList from "../Pages/Products/ProductList";
+import ProductList from "../Pages/Products/ProductList/ProductList";
 import ProductDetails from "../Pages/Products/ProductDetails";
 import NewProduct from "../Pages/Products/NewProduct/NewProduct";
+import UpdateProduct from "../Pages/Products/UpdateProduct/UpdateProduct";
 import Checkout from "../Pages/Checkout/Checkout";
+import { Update } from "@mui/icons-material";
 
 const AppRoutes = () => {
   const location = useLocation();
@@ -35,6 +37,7 @@ const AppRoutes = () => {
           <Route path="/products/productlist/" element={<ProductList />} />
           <Route path="/products/?:id" element={<ProductDetails />} />
           <Route path="/products/newproduct" element={<NewProduct />} />
+          <Route path="/products/UpdateProduct/:id" element={<UpdateProduct />} />
         </Route>
         <Route path="/checkout" element={<Checkout />} />
       </Routes>

@@ -1,15 +1,18 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import Fetch from "../../../Fetch/Fetch";
+import { useNavigate } from "react-router-dom";
 import { Backdrop, CircularProgress, Button as MuiButton } from "@mui/material";
+import { MdDelete } from "react-icons/md";
+import { FaEdit, FaShoppingCart } from "react-icons/fa";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import "./style.scss";
+import ProductListfn from "./ProductListfn";
 
 const ProductList = () => {
-  const { data, ErrMsg, IsLoading } = useOutletContext();
-  const navigate = useNavigate()
-  console.log(ErrMsg, IsLoading);
-  console.log(data)
+  const { data, ErrMsg, IsLoading, SetData } = Fetch("http://localhost:3000/products");
+  const navigate = useNavigate("");
+  const { HandleDeleteProduct } = ProductListfn();
   if (IsLoading) {
     return (
       <Backdrop
@@ -20,6 +23,10 @@ const ProductList = () => {
       </Backdrop>
     );
   }
+  else if (data.length == 0) {
+    return <h1>{ErrMsg}</h1>
+  }
+
   return (
     <section>
       <div>
@@ -33,6 +40,7 @@ const ProductList = () => {
         </MuiButton>
       </div>
       <div className="ProductList">
+
         {data.map((product) => (
           <Card key={product.id} className="ProductList_Card">
             <center className="ProductList_Card_Center">
@@ -53,7 +61,9 @@ const ProductList = () => {
             </Card.Body>
             <Card.Footer className="ProductList_Card_Footer">
               <Card.Text>${product.price}</Card.Text>
-              <Button variant="primary">Add To Cart</Button>
+              <Button variant="primary"><FaShoppingCart /></Button>
+              <Button variant="secondary" onClick={() => navigate(`/products/updateproduct/${product.id}`)}><FaEdit /></Button>
+              <Button variant="danger" onClick={() => HandleDeleteProduct(product.id, data, SetData,)}><MdDelete /></Button>
             </Card.Footer>
           </Card>
         ))}

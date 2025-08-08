@@ -6,23 +6,24 @@ const Fetch = (url) => {
   const [ErrMsg, SetErrMsg] = useState("");
   const [IsLoading, SetIsLoading] = useState(true);
   useEffect(() => {
-    const APIFetch = async()=>{
-      try{
+    const APIFetch = async () => {
+      try {
         const response = await axios.get(url)
         SetData(response.data);
       }
-      catch(err){
+      catch (err) {
         SetErrMsg(err.message);
       }
-      finally{
+      finally {
         setTimeout(() => {
-           SetIsLoading(false)
-        },1000)
+          SetIsLoading(false)
+        }, 1000)
       }
     }
     APIFetch()
-  }, []);
-  return { data, ErrMsg, IsLoading };
+  }, [url]);
+ 
+  return { data, ErrMsg, IsLoading, SetData };
 };
 
 export default Fetch;

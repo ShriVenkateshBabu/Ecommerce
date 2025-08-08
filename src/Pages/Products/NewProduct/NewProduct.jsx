@@ -1,4 +1,6 @@
 import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import NewProductFn from "./NewProductFn";
 import "./style.scss";
 
@@ -6,7 +8,15 @@ const NewProduct = () => {
   const { HandleNewProduct,
     AddProduct,
     NewProduct,
+    open,
   } = NewProductFn()
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <>
       <Paper elevation={20} className="NewProduct_Paper">
@@ -59,6 +69,16 @@ const NewProduct = () => {
           <Button type="submit" aria-label="add" role="button" variant="contained">
             Add
           </Button>
+          <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity="success"
+              variant="filled"
+              sx={{ width: '100%' }}
+            >
+              Product Added Succesfully
+            </Alert>
+          </Snackbar>
         </Grid>
       </Paper>
     </>

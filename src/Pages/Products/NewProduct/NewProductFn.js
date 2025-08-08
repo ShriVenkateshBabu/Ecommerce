@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const NewProductFn = () => {
   const navigate = useNavigate("");
+  const [open, setOpen] = useState(false);
+
   const [NewProduct, SetNewProduct] = useState({
     title: "",
     price: 109.95,
@@ -12,7 +14,7 @@ const NewProductFn = () => {
     image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
     rating: {
       rate: 0,
-      count:0,
+      count: 0,
     },
   });
 
@@ -44,7 +46,10 @@ const NewProductFn = () => {
         }
       );
       if (POSTAPI.status == 200 || POSTAPI.status == 201) {
-        navigate("/products");
+        setOpen(true);
+        setTimeout(() => {
+          navigate("/products");
+        }, 1500);
       } else {
         throw new Error("Something went wrong");
       }
@@ -57,6 +62,8 @@ const NewProductFn = () => {
     AddProduct,
     NewProduct,
     SetNewProduct,
+    open,
+    setOpen,
   };
 };
 

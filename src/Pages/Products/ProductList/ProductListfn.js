@@ -1,6 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../../store/cartSlice";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 const ProductListfn = () => {
+  const dispatch = useDispatch();
+  
+  const addtoWishlist = (product) => {
+    dispatch(addToCart(product));
+  };
+
   const HandleDeleteProduct = (id, data, setData) => {
     const DeleteApi = async () => {
       try {
@@ -23,7 +30,7 @@ const ProductListfn = () => {
     DeleteApi();
   };
 
-  return { HandleDeleteProduct };
+  return { HandleDeleteProduct, addtoWishlist };
 };
 
 export default ProductListfn;

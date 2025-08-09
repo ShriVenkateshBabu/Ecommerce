@@ -15,8 +15,7 @@ import ProductDetails from "../Pages/Products/ProductDetails";
 import NewProduct from "../Pages/Products/NewProduct/NewProduct";
 import UpdateProduct from "../Pages/Products/UpdateProduct/UpdateProduct";
 import Checkout from "../Pages/Checkout/Checkout";
-import { Update } from "@mui/icons-material";
-
+import WishList from "../Pages/WishList/WishList";
 const AppRoutes = () => {
   const location = useLocation();
   const [hidenav, setnavbar] = useState(true);
@@ -39,6 +38,7 @@ const AppRoutes = () => {
           <Route path="/products/newproduct" element={<NewProduct />} />
           <Route path="/products/UpdateProduct/:id" element={<UpdateProduct />} />
         </Route>
+        <Route path="/wishlist" element={<WishList />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>

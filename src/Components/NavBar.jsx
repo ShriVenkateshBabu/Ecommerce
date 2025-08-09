@@ -1,12 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import AccountMenu from "./LoginAvatar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import SearchAppBar from "./SearchBar";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import "./ComponentCss/NavBar.scss";
 const NavBar = () => {
- 
+   const navigate = useNavigate()
   return (
     <nav>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -28,6 +29,7 @@ const NavBar = () => {
                 Checkout
               </Nav.Link>
             </Nav>
+            <FavoriteBorderIcon onClick={() => navigate("/wishlist")} sx={{ fontSize: 30, color: 'red',cursor:'pointer' }}  />
             <SearchAppBar />
             <AccountMenu />
           </Navbar.Collapse>

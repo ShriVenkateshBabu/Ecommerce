@@ -4,12 +4,8 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +17,7 @@ export default function AccountMenu() {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = (value) => {
-        if(value === "Logout"){
+        if (value === "Logout") {
             navigate("/login")
         }
         setAnchorEl(null);
@@ -82,7 +78,7 @@ export default function AccountMenu() {
 
 
 
-                <MenuItem onClick={()=>handleClose("Logout")} >
+                <MenuItem onClick={() => handleClose("Logout")} >
                     <ListItemIcon>
                         <Logout fontSize="small" />
                     </ListItemIcon>

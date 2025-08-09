@@ -10,9 +10,9 @@ import "./style.scss";
 import ProductListfn from "./ProductListfn";
 
 const ProductList = () => {
-  const { data, ErrMsg, IsLoading, SetData } = Fetch("http://localhost:3000/products");
   const navigate = useNavigate("");
-  const { HandleDeleteProduct } = ProductListfn();
+  const { data, ErrMsg, IsLoading, SetData } = Fetch("http://localhost:3000/products");
+  const { HandleDeleteProduct,addtoWishlist } = ProductListfn();
   if (IsLoading) {
     return (
       <Backdrop
@@ -26,7 +26,6 @@ const ProductList = () => {
   else if (data.length == 0) {
     return <h1>{ErrMsg}</h1>
   }
-
   return (
     <section>
       <div>
@@ -61,7 +60,7 @@ const ProductList = () => {
             </Card.Body>
             <Card.Footer className="ProductList_Card_Footer">
               <Card.Text>${product.price}</Card.Text>
-              <Button variant="primary"><FaShoppingCart /></Button>
+              <Button variant="primary" onClick={() => addtoWishlist(product)}><FaShoppingCart /></Button>
               <Button variant="secondary" onClick={() => navigate(`/products/updateproduct/${product.id}`)}><FaEdit /></Button>
               <Button variant="danger" onClick={() => HandleDeleteProduct(product.id, data, SetData,)}><MdDelete /></Button>
             </Card.Footer>

@@ -6,6 +6,18 @@ const UpdataeProductfn = () => {
   const navigate = useNavigate("");
   const { id } = useParams();
   const [open, setOpen] = useState(false);
+  const [UpdateProduct, SetUpdateProduct] = useState({
+    title: "",
+    price: 109.95,
+    description:
+      "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    category: "",
+    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    rating: {
+      rate: 0,
+      count: 0,
+    },
+  });
   useEffect(() => {
     const APIFetch = async () => {
       try {
@@ -35,19 +47,6 @@ const UpdataeProductfn = () => {
     };
     APIFetch();
   }, []);
-
-  const [UpdateProduct, SetUpdateProduct] = useState({
-    title: "",
-    price: 109.95,
-    description:
-      "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    category: "",
-    image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-    rating: {
-      rate: 0,
-      count: 0,
-    },
-  });
 
   const HandleUpdateProduct = (event) => {
     const { name, value } = event.target;

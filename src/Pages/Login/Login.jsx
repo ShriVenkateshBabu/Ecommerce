@@ -1,37 +1,65 @@
 import "./style.scss";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import { Paper, Typography, TextField, Button, Grid } from "@mui/material";
 
 const Login = () => {
   const navigate = useNavigate();
-  function Login(e) {
+
+  function handleLogin(e) {
+    
     e.preventDefault();
     navigate("/home");
   }
 
   return (
     <div className="Login_Container">
-      <Form className="Login_form">
-        <Form.Group className="mb-3" controlId="formGroupEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" autoComplete="on" autoFocus placeholder="Enter email" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formGroupPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" autoComplete="on" placeholder="Password" />
-        </Form.Group>
-        <Form.Check inline label="Remember me" name="group1" type="checkbox" />
-        <Button
-          role="button"
-          onClick={(e) => Login(e)}
-          className="Login_btn"
-          tabIndex={0}
-          type="submit"
+      <Paper elevation={24} className="Login_Paper" sx={{ p: 4 }}>
+        <Typography
+          variant="h5"
+          textAlign="center"
+          sx={{ fontFamily: "serif", mb: 3 }}
         >
           Login
-        </Button>
-      </Form>
+        </Typography>
+
+        <form onSubmit={handleLogin}>
+          <TextField
+            label="Username"
+            variant="outlined"
+            fullWidth
+            sx={{ mb: 2, fontFamily: "serif" }}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            sx={{ mb: 3, fontFamily: "serif" }}
+          />
+          <Grid container spacing={2}>
+            <Grid size={6}>
+              <Button
+                variant="contained"
+                type="submit"
+                fullWidth
+                sx={{ fontFamily: "serif" }}
+              >
+                Login
+              </Button>
+            </Grid>
+            <Grid size={6}>
+              <Button
+                variant="contained"
+                 onClick={() => navigate("/signup")}
+                fullWidth
+                sx={{ fontFamily: "serif" }}
+              >
+                 SignUp
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Paper>
     </div>
   );
 };

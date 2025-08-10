@@ -14,11 +14,9 @@
 }
 .signup_Paper {
   width: 50%;
-  height: 90%;
+  height: max-content;
   display: flex;
   padding: 2%;
   flex-direction: column;
-  gap: 2%; 
-
- 
+  gap: 0.6rem; 
 }

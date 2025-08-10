@@ -12,7 +12,8 @@ import ProductListfn from "./ProductListfn";
 const ProductList = () => {
   const navigate = useNavigate("");
   const { data, ErrMsg, IsLoading, SetData } = Fetch("http://localhost:3000/products");
-  const { HandleDeleteProduct,addtoWishlist } = ProductListfn();
+  const { HandleDeleteProduct, addtoWishlist, wishlistSnackbar } = ProductListfn();
+  
   if (IsLoading) {
     return (
       <Backdrop

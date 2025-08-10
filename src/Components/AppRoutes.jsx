@@ -23,6 +23,9 @@ const AppRoutes = () => {
     const noNavRoutes = ["/", "/login", "/signup"];
     setnavbar(noNavRoutes.includes(location.pathname));
   }, [location]);
+  if(!localStorage.getItem("cart")){
+    localStorage.setItem("cart",JSON.stringify([]))
+  }
   return (
     <div>
       {!hidenav && <NavBar />}

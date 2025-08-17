@@ -8,10 +8,19 @@ import { Visibility, VisibilityOff } from "@mui/icons-material"
 import LoginIcon from "@mui/icons-material/Login";
 import AssignmentIndSharpIcon from "@mui/icons-material/AssignmentIndSharp";
 import './style.scss'
+import axios from 'axios';
 
 const Signup = () => {
 
   const navigate = useNavigate("/login")
+
+  const [open, setOpen] = React.useState(false);
+
+  const [alert, setAlert] = React.useState("");
+
+  const [severity, setseverity] = React.useState("");
+
+  const [shouldNavigate, setShouldNavigate] = React.useState(false)
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -32,10 +41,49 @@ const Signup = () => {
   )
 
 
-  const handleData = (data) => {
-    
+  const handleData = async (data) => {
+    try {
+      const new_user = {
+        username: data.username,
+        password: data.password
+      }
+
+      const POSTAPI = await axios.post("http://localhost:3000/credentials", new_user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (POSTAPI.status == 200 || POSTAPI.status == 201) {
+        setAlert("Login Successfull")
+        setseverity("success")
+        setOpen(true);
+        setShouldNavigate(true)
+      }
+      else {
+        throw new Error("Something went wrong");
+      }
+
+    }
+    catch (err) {
+
+      setAlert(err.message)
+      setseverity("error")
+      setOpen(true);
+      setShouldNavigate(false)
+      console.error(err)
+    }
   }
 
+  const handleClose = (event, reason) => {
+
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+    if (shouldNavigate) {
+      navigate("/login")
+    }
+  };
   return (
     <div className='signup_Container'>
       <Paper elevation={24} className='signup_Paper' component={"form"} onSubmit={handleSubmit(handleData)}>
@@ -133,8 +181,17 @@ const Signup = () => {
               <LoginIcon ml={4} ></LoginIcon>
             </Button>
           </Grid>
+          <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+            <Alert
+              onClose={handleClose}
+              severity={severity}
+              variant="filled"
+              sx={{ width: '100%' }}
+            >
+              {alert}
+            </Alert>
+          </Snackbar>
         </Grid>
-
       </Paper>
     </div>
   )

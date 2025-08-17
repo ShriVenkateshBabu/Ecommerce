@@ -11,7 +11,7 @@ import Signup from "../Pages/SignUp/Signup";
 import Home from "../Pages/HomePage/Home";
 import Products from "../Pages/Products/Products";
 import ProductList from "../Pages/Products/ProductList/ProductList";
-import ProductDetails from "../Pages/Products/ProductDetails";
+import ProductDetails from "../Pages/Products/ProductDetails/ProductDetails";
 import NewProduct from "../Pages/Products/NewProduct/NewProduct";
 import UpdateProduct from "../Pages/Products/UpdateProduct/UpdateProduct";
 import Checkout from "../Pages/Checkout/Checkout";
@@ -37,7 +37,7 @@ const AppRoutes = () => {
         <Route path="/products" element={<Products />}>
           <Route index element={<ProductList />} />
           <Route path="/products/productlist/" element={<ProductList />} />
-          <Route path="/products/?:id" element={<ProductDetails />} />
+          <Route path="/products/Details" element={<ProductDetails />} />
           <Route path="/products/newproduct" element={<NewProduct />} />
           <Route path="/products/UpdateProduct/:id" element={<UpdateProduct />} />
         </Route>

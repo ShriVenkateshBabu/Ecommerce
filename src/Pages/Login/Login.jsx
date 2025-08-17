@@ -33,7 +33,7 @@ const Login = () => {
     }
     setOpen(false);
     if (shouldNavigate) {
-      navigate("/products")
+      navigate("/home")
     }
   };
 

@@ -288,5 +288,17 @@
         "count": "12"
       }
     }
+  ],
+  "credentials": [
+    {
+      "id": "1",
+      "username": "venky",
+      "password": "venky"
+    },
+    {
+      "id": "2",
+      "username": "venky",
+      "password": "venky"
+    }
   ]
 }

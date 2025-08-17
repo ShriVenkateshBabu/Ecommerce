@@ -1,26 +1,17 @@
 import * as React from 'react';
-import { Button, Grid } from "@mui/material"
-import IconButton from '@mui/material/IconButton';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { useForm } from "react-hook-form"
-import { Paper, Typography, TextField, } from '@mui/material'
 import * as Yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
-import LoginIcon from '@mui/icons-material/Login';
-import AssignmentIndSharpIcon from '@mui/icons-material/AssignmentIndSharp';
-
-import './style.scss'
 import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { Paper, Typography, TextField, Button, Grid, FormHelperText, FormControl, InputAdornment, OutlinedInput, InputLabel, IconButton, Snackbar, Alert } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material"
+import LoginIcon from "@mui/icons-material/Login";
+import AssignmentIndSharpIcon from "@mui/icons-material/AssignmentIndSharp";
+import './style.scss'
 
 const Signup = () => {
 
-   const navigate = useNavigate("/login")
+  const navigate = useNavigate("/login")
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -42,8 +33,7 @@ const Signup = () => {
 
 
   const handleData = (data) => {
-     
-    console.log(data)
+    
   }
 
   return (
@@ -99,7 +89,7 @@ const Signup = () => {
         <FormControl fullWidth variant="outlined"
           error={!!errors.confirmpassword}
         >
-          
+
           <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -135,11 +125,11 @@ const Signup = () => {
           <Grid size={6}>
             <Button fullWidth variant="contained" type='submit' role='button' aira-label='Sign In' tabIndex={0}>Sign In
 
-            <AssignmentIndSharpIcon ml={6}></AssignmentIndSharpIcon>
+              <AssignmentIndSharpIcon ml={6}></AssignmentIndSharpIcon>
             </Button>
           </Grid>
           <Grid size={6}>
-            <Button fullWidth variant="contained" onClick={() => navigate("/login")} role='button' aira-label='Sign In' tabIndex={0}>Login   
+            <Button fullWidth variant="contained" onClick={() => navigate("/login")} role='button' aira-label='Sign In' tabIndex={0}>Login
               <LoginIcon ml={4} ></LoginIcon>
             </Button>
           </Grid>
